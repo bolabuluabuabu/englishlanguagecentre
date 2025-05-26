@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <!-- <base href="/englishlanguagecentre/"> -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Selamat datang di English Language Centre—tempat belajar Bahasa Inggris yang fleksibel, seru, dan terbuka untuk semua!">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="English Language Centre">
+  <link rel="apple-touch-icon" href="elc_logo.jpeg">
+
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/png" href="favicon.png"/> -->
+  <link rel="icon" type="image/jpeg" href="elc_logo.jpeg"/>
+
+
+  <title>English Language Centre</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+  <style>
+    #elc-loader {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .elc-spinner {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .elc-spinner .spinner-ring {
+      position: absolute;
+      top: 0; left: 0;
+      width: 120px;
+      height: 120px;
+      border: 8px solid #92751244;
+      border-top: 8px solid #927512;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-sizing: border-box;
+    }
+    .elc-spinner img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px 0 #92751244;
+      transform: translate(-50%, -50%);
+      background: #000;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body style="background-color:black;">
+  <div id="elc-loader">
+    <div class="elc-spinner">
+      <div class="spinner-ring"></div>
+      <img src="elc_logo.jpeg" alt="Loading...">
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('elc-loader');
+      if (loader) loader.style.opacity = '1';
+    });
+    window.addEventListener('flutter-first-frame', function() {
+      var loader = document.getElementById('elc-loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(function() { loader.style.display = 'none'; }, 300);
+      }
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
